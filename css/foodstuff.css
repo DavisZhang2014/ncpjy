@@ -1,0 +1,19 @@
+@CHARSET "UTF-8";
+#subject{
+	width:1050px;
+	height:700px;
+	border:1px dashed #666;
+	margin:10px auto;
+}
+#subject .list {
+	width:350px;
+	height:227px;
+	float:left;
+}
+#subject .list dl{
+	margin:0 8px;
+}
+#subject .list dl img{
+	opacity:0.9;
+	border-radius:20px;
+}
