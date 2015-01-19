@@ -1,17 +1,21 @@
 @CHARSET "UTF-8";
 #login {
 	width:1005px;
-	height:auto;
+	height:600px;
 	margin:10px auto;
 	border:1px solid #CCC;
 	font-size:12px;
 	
 }
 #login h2 {
+	position:relative;
+	top:20px;
 	text-indent:0;
 	text-align:center;
 }
 #login dl {
+	position:relative;
+	top:10px;
 	width:300px;
 	margin:0 auto;
 }

@@ -74,15 +74,15 @@ $_result = _query("SELECT
 						f.pic,
 						f.price,
 						s.id,
-						s.food_id,
+						s.product_id,
 						s.creat_date,
 						s.quantity
 					FROM
-						tb_food AS f,
+						tb_product AS f,
 						tb_shoppingcart AS s
 					WHERE
 						f.id = any(SELECT
-									s.food_id
+									s.product_id
 								FROM
 									tb_shoppingcart
 								WHERE
@@ -118,7 +118,7 @@ $_result = _query("SELECT
 		<?php 
 				do{
 					$_html = array();
-					$_html['food_id'] = $_rows['food_id'];
+					$_html['product_id'] = $_rows['product_id'];
 					$_html['id'] = $_rows['id'];
 					$_html['pic'] = $_rows['pic'];
 					$_html['name'] = $_rows['name'];
@@ -128,12 +128,12 @@ $_result = _query("SELECT
 			?>
 			
 			<tr>
-				<td><a href="food_detail.php?id=<?php echo $_html['food_id']?>"><img src="thumb.php?filename=<?php echo 'uploads/'.$_html['pic']?>&percent=<?php echo $_percent?>" /></a></td>
+				<td><a href="product_detail.php?id=<?php echo $_html['product_id']?>"><img src="thumb.php?filename=<?php echo 'uploads/'.$_html['pic']?>&percent=<?php echo $_percent?>" /></a></td>
 				<td><?php echo $_html['name']?></td>
 				<td><?php echo $_html['price']?></td>
 				<td><?php echo $_html['quantity']?></td>
 				<td><?php echo ($_html['price']*$_html['quantity'])?></td>
-				<td>[<a href="orders_buy.php?food_id=<?php echo $_html['food_id']?>">购买</a>][<a href="?action=del&id=<?php echo $_html['id']?>">删除</a>]</td>
+				<td>[<a href="orders_buy.php?product_id=<?php echo $_html['product_id']?>">购买</a>][<a href="?action=del&id=<?php echo $_html['id']?>">删除</a>]</td>
 			</tr>		
 		<?php 			
 		}while (!!$_rows = _fetch_array_list($_result))

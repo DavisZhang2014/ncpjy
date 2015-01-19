@@ -12,7 +12,7 @@ session_start();
 define('IN_TG',true);
 //引入公共文件
 //定义一个常量，用来指定本页的内容
-define('SCRIPT', 'db_food_add');
+define('SCRIPT', 'db_product_add');
 //引入公共文件
 require dirname(__FILE__).'/../../includes/common.inc.php';
 //引入验证文件
@@ -31,9 +31,9 @@ if(!isset($_GET['id'])) {
 	_alert_back("非法操作");
 				}
 				
-$_percent = 0.5;
+$_percent = 0.4;
 $id=$_GET['id'];
-$_result=_query("SELECT id,name,pic,price,material,seasoning,content,stock FROM tb_food WHERE id= '$id' LIMIT 1");
+$_result=_query("SELECT id,name,pic,variety,area,sort,standard,price,content,stock FROM tb_product WHERE id= '$id' LIMIT 1");
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -54,7 +54,7 @@ $_result=_query("SELECT id,name,pic,price,material,seasoning,content,stock FROM 
 		<?php 
 			require ROOT_PATH.'includes/db_manager.inc.php';
 		?>
-		<div id="food_add">
+		<div id="product_add">
 			<h2>商品修改</h2>
 <?php 
 	//获取数据
@@ -63,9 +63,11 @@ $_result=_query("SELECT id,name,pic,price,material,seasoning,content,stock FROM 
 	$_html['id'] = $_rows['id'];
 	$_html['name'] = $_rows['name'];
 	$_html['pic'] = $_rows['pic'];
-	$_html['price'] = $_rows['price'];
-	$_html['material']=$_rows['material'];
-	$_html['seasoning']=$_rows['seasoning'];
+	$_html['variety'] = $_rows['variety'];
+	$_html['area'] = $_rows['area'];
+	$_html['sort']=$_rows['sort'];
+	$_html['standard']=$_rows['standard'];
+	$_html['price']=$_rows['price'];
 	$_html['content'] = $_rows['content'];
 	$_html['stock'] = $_rows['stock'];
 	$_html = _html($_html);	
@@ -85,23 +87,26 @@ $_result=_query("SELECT id,name,pic,price,material,seasoning,content,stock FROM 
 		</form>		
 		<form action="modifyclass.php?action=modify" method="post">
 			<input type="hidden" name="id" value=<?php echo $_html['id']?>> 
-			<dl class="food_intro">	
+			<dl class="product_intro">	
 				<dt>名称: <input type="text" name="title" value=<?php echo $_html['name']?> ></input></dt>
 				<dt>类别：<select name="sort">
-						<option value="0">荤菜</option>
-						<option value="1">素菜</option>
-						<option value="2">凉菜</option>
-						<option value="3">汤类</option>
-						<option value="4">粥类</option>
+						<option value="0">果品</option>
+						<option value="1">蔬菜</option>
+						<option value="2">畜禽</option>
+						<option value="3">花卉</option>
+						<option value="4">水产</option>
+						<option value="5">其它</option>
 					</select>
 				</dt>
-				<dd class="food_count">价格: <input type="text" name="price" value=<?php echo $_html['price']?> ></input></dd>
-				<dd class="food_count">数量: <input type="text" name="count" value=<?php echo $_html['stock']?> size="3"></input></dd>
-				<dd class="food_mater">用料：<textarea name="material" rows="2" cols="46" ><?php echo $_html['material']?></textarea></dd>
-				<dd class="food_sea">调料：<textarea name="seasoning" rows="2" cols="46" ><?php echo $_html['seasoning']?></textarea></dd>
+				<dd class="product_count">品种：<input type="text" name="variety" value = <?php echo $_html['sort']?>></input></dd>
+				<dd class="product_count">数量: <input type="text" name="stock" value = <?php echo $_html['stock']?> size="3"></input></dd>
+				<dd class="product_mater">规格: <input type="text" name="standard" value = <?php echo $_html['standard']?> ></input></dd>
+				<dd class="product_mater">价格: <input type="text" name="price" value = <?php echo $_html['price']?> size="3"></input></dd>
+				<dd class="product_time">上市时间：<input type="text" name="year" size="3" /> 年 <input type="text" name="month" size="2" /> 月 <input type="text" name="day" size="2"/> 日 </dd>
+				<dd class="product_sea">产地：<textarea name="area" rows="2" cols="46" value = <?php echo $_html['area'] ?>></textarea></dd>
 			</dl>
 			<dl class="method">
-				<dt>做法：</dt>
+				<dt>商品详情：</dt>
 				<dd><textarea name="content" rows="8" cols="80"><?php echo $_html['content']?></textarea></dd>
 				<dd><input type="submit" value="修改" /></dd>
 			</dl>

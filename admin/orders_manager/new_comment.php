@@ -47,7 +47,7 @@ $_result = _query("SELECT * FROM
 		<?php 
 			require ROOT_PATH.'includes/orders_manager.inc.php';
 		?>
-	<div id="food_list">
+	<div id="product_list">
 		<h2>未回复评论</h2>
 		<table cellspacing="1">
 		<tr><th>商品信息</th><th>商品名称</th><th>所属订单</th><th>评价内容</th><th>评价时间</th></tr>
@@ -55,7 +55,7 @@ $_result = _query("SELECT * FROM
 				while (!!$_rows = _fetch_array_list($_result)){
 					$_html = array();
 					$_html['order_id'] = $_rows['order_id'];
-					$_html['food_id'] = $_rows['food_id'];
+					$_html['product_id'] = $_rows['product_id'];
 					$_html['username'] = $_rows['username'];
 					$_html['content'] = $_rows['content'];
 					$_html['date_time'] = $_rows['date_time'];
@@ -65,9 +65,9 @@ $_result = _query("SELECT * FROM
 															pic,
 															name
 														FROM 
-															tb_food 
+															tb_product 
 														WHERE 
-															id='{$_html['food_id']}' 
+															id='{$_html['product_id']}' 
 														LIMIT 
 															1
 														")){
@@ -77,7 +77,7 @@ $_result = _query("SELECT * FROM
 					}
 			?>
 			<tr class="product">			
-				<td><a href="comment_detail.php?id=<?php echo $_html['food_id']?>"><img src="../../thumb.php?filename=<?php echo 'uploads/'.$_html['pic']?>&percent=<?php echo $_percent?>" /></a></td>
+				<td><a href="comment_detail.php?id=<?php echo $_html['product_id']?>"><img src="../../thumb.php?filename=<?php echo 'uploads/'.$_html['pic']?>&percent=<?php echo $_percent?>" /></a></td>
 				<td><?php echo $_html['name']?></td>
 				<td><a href="order_detail.php?order_id=<?php echo $_html['order_id']?>"><?php echo $_html['order_id']?></a></td>
 				<td><?php echo  $_html['content']?></td>

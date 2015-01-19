@@ -1,41 +1,41 @@
 @CHARSET "UTF-8";
-#member #food_list{
+#member #product_list{
 	border:1px solid #999;
 	width:750px;
 	margin:9px;
 	float:right;
 	background:#eed;
 }
-#member #food_list table{
+#member #product_list table{
 	width:100%;
 	margin:10px auto;
 	text-align:center;
 	background:#ccc;
 	margin-bottom:0px;
 }
-#member #food_list table tr{
+#member #product_list table tr{
 	height:25px;
 	line-height:40px;
 	background:#fff;
 }
-#member #food_list table tr td{
+#member #product_list table tr td{
 	line-height:50px;
 }
-#member #food_list table td a{
+#member #product_list table td a{
 	text-decoration:none;
 }
-#member #food_list table td a:hover{
+#member #product_list table td a:hover{
 	text-decoration:underline;
 }
-#member #food_list dl{
+#member #product_list dl{
 	float:right;
 	margin:10px 300px 0 0;
 }
-#member #food_list dl a{
+#member #product_list dl a{
 	text-decoration:none;
 	color:#333;
 }
-#member #food_list dl a:hover{
+#member #product_list dl a:hover{
 	text-decoration:underline;
 	color:#030;
 }

@@ -208,9 +208,6 @@ function  _check_email($_string,$_min_num,$_max_num)
 		{
 			_alert_back('邮件长度不合法!');
 		}
-	
-	
-	
 	return _mysql_string($_string);
 }
 /**

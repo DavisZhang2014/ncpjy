@@ -15,8 +15,8 @@ define('SCRIPT', 'comment_detail');
 require dirname(__FILE__).'/../../includes/common.inc.php'; //转换成硬路径，速度更快
 $_percent = 0.8;
 $_id=$_GET['id'];
-$_result=_query("SELECT * FROM tb_food WHERE id= '$_id' LIMIT 1");
-$_result2 = _query("SELECT id,order_id,food_id,username,content,date_time FROM tb_comment WHERE food_id='$_id'");
+$_result=_query("SELECT * FROM tb_product WHERE id= '$_id' LIMIT 1");
+$_result2 = _query("SELECT id,order_id,product_id,username,content,date_time FROM tb_comment WHERE product_id='$_id'");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -28,7 +28,7 @@ $_result2 = _query("SELECT id,order_id,food_id,username,content,date_time FROM t
 	require ROOT_PATH.'includes/db_title.inc.php';
 ?>
 <script src="../../js/jquery-2.1.1.js"></script>
-<script src="../../js/food_detail.js"></script>
+<script src="../../js/product_detail.js"></script>
 </head>
 <body>
 <?php 
@@ -50,12 +50,12 @@ $_result2 = _query("SELECT id,order_id,food_id,username,content,date_time FROM t
 	$_html['price'] = $_rows['price'];
 	$_html = _html($_html);	
 ?>
-	<div id="food_detail_up">
-		<div id="food_detail_left">
+	<div id="product_detail_up">
+		<div id="product_detail_left">
 			<td><img src="../../thumb.php?filename=<?php echo 'uploads/'.$_html['pic']?>&percent=<?php echo $_percent?>" /></td>
 		</div>
 		
-		<div id="food_detail_right">
+		<div id="product_detail_right">
 				<h2><?php echo $_html['name']?></h2>
 				<dl><strong>价格:</strong><?php echo $_html['price']?>元</dl>
 				<p class="line"></p>
@@ -64,7 +64,7 @@ $_result2 = _query("SELECT id,order_id,food_id,username,content,date_time FROM t
 				<dl><strong>调料:</strong><?php echo $_html['seasoning']?></dl>
 		</div>
 	</div>
-	<div id="food_detail_bottom">
+	<div id="product_detail_bottom">
 		<div id="cooking">
 			<dl>
 				<dt><strong class="cooking">做法</strong><strong class="comment" >评价</strong></dt>
@@ -82,7 +82,7 @@ $_result2 = _query("SELECT id,order_id,food_id,username,content,date_time FROM t
 						$_html2 = array();
 						$_html2['id'] = $_rows2['id'];
 						$_html2['order_id'] = $_rows2['order_id'];
-						$_html2['food_id'] = $_rows2['food_id'];
+						$_html2['product_id'] = $_rows2['product_id'];
 						$_html2['username'] = $_rows2['username'];
 						$_html2['content'] = $_rows2['content'];
 						$_html2['date_time'] = $_rows2['date_time'];

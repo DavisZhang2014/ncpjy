@@ -30,8 +30,8 @@ if (!defined('IN_TG'))		//防止恶意调用
 		<dt>订单管理</dt>	
 		<dd><a href="orders_processed.php">已处理订单</a></dd>
 		<dd><a href="orders_finish.php">已完成订单</a></dd>
-		<dd><a href="db_food_list.php?sort=1">订单查询</a></dd>
-		<dd><a href="db_food_list.php?sort=2">订单总结</a></dd>
+		<dd><a href="db_product_list.php?sort=1">订单查询</a></dd>
+		<dd><a href="db_product_list.php?sort=2">订单总结</a></dd>
 	</dl>
 
 

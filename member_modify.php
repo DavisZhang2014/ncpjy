@@ -30,7 +30,6 @@ if($_GET['action'] == "modify")
 
 		//创建一个空数组，用来存放提交过来的合法数据
 		$_clean = array();
-
 		$_clean['password'] = _check_modify_password($_POST['password'],6);
 		$_clean['sex'] = _check_sex($_POST['sex']);
 		$_clean['phone'] = $_POST['phone'];
@@ -40,7 +39,9 @@ if($_GET['action'] == "modify")
 		{
 			_query("UPDATE tb_user SET
 			sex='{$_clean['sex']}',
+			phone='{$_clean['phone']}',
 			email='{$_clean['email']}'
+			
 			WHERE
 			username='{$_COOKIE['username']}'
 			");

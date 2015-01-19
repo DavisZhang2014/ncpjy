@@ -34,17 +34,17 @@ if(!isset($_COOKIE['username'])){
 	if(!!isset($_COOKIE[username])){
 		$_clean = array();
 		$_clean['username'] =$_COOKIE['username'];
-		$_clean['foodid'] = $_GET['id'];
+		$_clean['productid'] = $_GET['id'];
 
 		_query("INSERT INTO tb_shoppingcart(
 												username,
-												food_id,
+												product_id,
 												creat_date,
 												quantity
 											)
 											VALUES(
 												'{$_clean['username']}',
-												'{$_clean['foodid']}',
+												'{$_clean['productid']}',
 												NOW(),
 												'1'
 											)");

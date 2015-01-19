@@ -27,11 +27,6 @@ if(!isset($_COOKIE['username'])){
 // 		_alert_back('您必须是数据库管理员');
 // 	}
 
-				
-$_percent = 0.5;
-$id=$_GET['id'];
-$_result=_query("SELECT * FROM tb_product WHERE id= '$id' LIMIT 1");
-
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -52,20 +47,7 @@ $_result=_query("SELECT * FROM tb_product WHERE id= '$id' LIMIT 1");
 		?>
 		<div id="product_add">
 			<h2>商品添加</h2>
-			<?php 
-				//获取数据
-				$_rows=_fetch_array_list($_result);
-				$_html = array();
-				$_html['id'] = $_rows['id'];
-				$_html['name'] = $_rows['name'];
-				$_html['pic'] = $_rows['pic'];
-				$_html['price'] = $_rows['price'];
-				$_html['material']=$_rows['material'];
-				$_html['seasoning']=$_rows['seasoning'];
-				$_html['content'] = $_rows['content'];
-				$_html = _html($_html);	
-			?>
-			
+					
 			<form enctype="multipart/form-data" action="uploadclass.php" method="post">
 				<input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
 				<dl class="photo_up">
@@ -80,17 +62,19 @@ $_result=_query("SELECT * FROM tb_product WHERE id= '$id' LIMIT 1");
 				<dl class="product_intro">	
 					<dt>名称: <input type="text" name="title"  ></input></dt>
 					<dt>类别：<select name="sort">
-								<option value="0">荤菜</option>
-								<option value="1">素菜</option>
-								<option value="2">凉菜</option>
-								<option value="3">汤类</option>
-								<option value="4">粥类</option>
+								<option value="0">果品</option>
+								<option value="1">蔬菜</option>
+								<option value="2">畜禽</option>
+								<option value="3">花卉</option>
+								<option value="4">水产</option>
+								<option value="5">其它</option>
 							</select>
 					</dt>
 					<dd class="product_count">品种：<input type="text" name="variety" ></input></dd>
 					<dd class="product_count">数量: <input type="text" name="count" value="0" size="3"></input></dd>
 					<dd class="product_mater">规格: <input type="text" name="standard" ></input></dd>
 					<dd class="product_mater">价格: <input type="text" name="price" value="0" size="3"></input></dd>
+					<dd class="product_time">上市时间：<input type="text" name="year" size="3" /> 年 <input type="text" name="month" size="2" /> 月 <input type="text" name="day" size="2"/> 日 </dd>
 					<dd class="product_sea">产地：<textarea name="area" rows="2" cols="46" ></textarea></dd>
 				</dl>
 				<dl class="method">

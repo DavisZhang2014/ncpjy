@@ -26,7 +26,7 @@ if($_GET['action'] == 'login')
 	$_clean['username'] = _check_username($_POST['username'],2,20);
 	$_clean['password'] = _check_password($_POST['password'],6);
 	//到数据库去验证
-	if (!!$_rows = _fetch_array("SELECT username,uniqid,role_id FROM tb_admin WHERE username='{$_clean['username']}' AND password='{$_clean['password']}' LIMIT 1")) 
+	if (!!$_rows = _fetch_array("SELECT username,uniqid,role_id FROM tb_admin WHERE username='{$_clean['username']}' AND password='{$_clean['password']}' AND state = '1' LIMIT 1")) 
 	{
 		//登录成功后记录登录信息
 		_query("UPDATE tb_admin SET
@@ -48,7 +48,7 @@ if($_GET['action'] == 'login')
 				break;
 			case 3:
 				$_SESSION['manager'] = '超级管理员';
-				_location(null,'super_manager.php');
+				_location(null,'super_manager/index.php');
 				break;
 			default:
 				_location(null,'index1.php');
@@ -59,7 +59,7 @@ if($_GET['action'] == 'login')
 	{
 		_close();
 		_session_destroy();
-		_location('用户名密码不正确或者该账户未被激活！','login.php');
+		_location('用户名密码不正确或者该账户未被激活！','index.php');
 	}
 }
 ?>

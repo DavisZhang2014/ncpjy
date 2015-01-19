@@ -51,7 +51,7 @@ if(isset($_GET['id']))
 		<?php 
 			require ROOT_PATH.'includes/orders_manager.inc.php';
 		?>
-	<div id="food_list">
+	<div id="product_list">
 	
 		<h2>订单发货</h2>
 		<form method="post" name="deliver" action ="deliver_sub.php?action=sub&order_id=<?php echo $_html['order_id']?>">
@@ -72,12 +72,12 @@ if(isset($_GET['id']))
 											of.price,
 											ord.quantity
 										FROM 
-											tb_food AS of,tb_order_items AS ord
+											tb_product AS of,tb_order_items AS ord
 										WHERE 
-											ord.order_id='{$_rows['order_id']}' AND of.id=ord.food_id
+											ord.order_id='{$_rows['order_id']}' AND of.id=ord.product_id
 										");
 				while(!!$_rows2 = _fetch_array_list($_result2)){
-					$_html['food_id'] = $_rows2['id'];
+					$_html['product_id'] = $_rows2['id'];
 					$_html['name'] = $_rows2['name'];
 					$_html['pic']=$_rows2['pic'];
 					$_html['price'] = $_rows2['price'];

@@ -23,12 +23,12 @@ if(!isset($_COOKIE['username'])){
 	_location("请先登录", 'login.php');
 }else {
 //从数据库购物车表提取数据，并存入订单表
-$_result = _query("SELECT food_id,quantity FROM tb_shoppingcart WHERE username='{$_COOKIE['username']}'");
+$_result = _query("SELECT product_id,quantity FROM tb_shoppingcart WHERE username='{$_COOKIE['username']}'");
 //创建一个空数组，用来存放提交过来的合法数据
 $_clean = array();
 $_clean['order_id'] = _build_order_no();
 $_clean['username'] = $_COOKIE['username'];
-$_clean['food_id'] = $_POST['food_id'];
+$_clean['product_id'] = $_POST['product_id'];
 $_clean['re_name'] = $_POST['re_name'];
 $_clean['phone'] = $_POST['phone'];
 $_clean['address'] = $_POST['address'];
@@ -57,27 +57,27 @@ if (_affected_rows() == 1)
 {
 	while(!!$_rows = _fetch_array_list($_result)){
 		$_html = array();
-		$_html['food_id'] = $_rows['food_id'];
+		$_html['product_id'] = $_rows['product_id'];
 		$_html['quantity'] = $_rows['quantity'];
 		$_html = _html($_html);
 		_query("INSERT INTO tb_order_items (
 										order_id,
-										food_id,
+										product_id,
 										quantity
 									)VALUES(
 										'{$_clean['order_id']}',
-										'{$_html['food_id']}',
+										'{$_html['product_id']}',
 										'{$_html['quantity']}'
 									)
 								");
 		if(_affected_rows() == 1){
-			_query("DELETE FROM tb_shoppingcart WHERE username='{$_COOKIE['username']}' AND food_id='{$_html['food_id']}'");
-			_query("UPDATE tb_food
+			_query("DELETE FROM tb_shoppingcart WHERE username='{$_COOKIE['username']}' AND product_id='{$_html['product_id']}'");
+			_query("UPDATE tb_product
 					SET
 						stock = stock-'{$_html['quantity']}',
 						sell_count = sell_count+'{$_html['quantity']}'
 					WHERE
-						id = '{$_html['food_id']}'
+						id = '{$_html['product_id']}'
 			");
 		}
 	}

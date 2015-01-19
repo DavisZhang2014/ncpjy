@@ -29,22 +29,24 @@ if($_GET['action']=='modify'){
 		$_clean = array();
 		$_clean['id']=$_POST['id'];
 		$_clean['name']=_check_username(@$_POST['title'],2,20);
-		$_clean['material'] = @$_POST['material'];
-		$_clean['seasoning'] = @$_POST['seasoning'];
-		$_clean['content'] = @$_POST['content'];
+		$_clean['variety'] = @$_POST['variety'];
+		$_clean['area'] = @$_POST['area'];
 		$_clean['sort'] = @$_POST['sort'];
+		$_clean['standard'] = @$_POST['standard'];
 		$_clean['price'] = floatval(@$_POST['price']);
-		$_clean['count'] = intval(@$_POST['count']);
-		$_clean['sort'] = @$_POST['sort'];
+	
+		$_clean['content'] = @$_POST['content'];
+		$_clean['stock'] = @$_POST['stock'];
 		_query("UPDATE
-						tb_food
+						tb_product
 				SET 
 						name = '{$_clean['name']}',
-						material = '{$_clean['material']}',
-						seasoning = '{$_clean['seasoning']}',
-						content = '{$_clean['content']}',
+						variety = '{$_clean['variety']}',
+						area = '{$_clean['area']}',
 						sort = '{$_clean['sort']}',
+						standard = '{$_clean['standard']}',
 						price = '{$_clean['price']}',
+						content = '{$_clean['content']}',
 						stock = '{$_clean['count']}',
 						date_time = NOW()
 				WHERE 

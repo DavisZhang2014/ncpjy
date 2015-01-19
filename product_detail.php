@@ -10,12 +10,14 @@
 */
 define('IN_TG',true);
 //定义一个常量，用来指定本页的内容
-define('SCRIPT', 'food_detail');
+define('SCRIPT', 'product_detail');
 //引入公共文件
 require dirname(__FILE__).'/includes/common.inc.php'; //转换成硬路径，速度更快
+//图片比例
+$_percent = 0.8;
 $_id=$_GET['id'];
-$_result=_query("SELECT * FROM tb_food WHERE id= '$_id' LIMIT 1");
-$_result2 = _query("SELECT id,username,content,date_time FROM tb_comment WHERE food_id='$_id'");
+$_result=_query("SELECT name,pic,variety,area,standard,price,market_time,content,stock FROM tb_product WHERE id= '$_id' LIMIT 1");
+$_result2 = _query("SELECT id,username,content,date_time FROM tb_comment WHERE product_id='$_id'");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -27,7 +29,7 @@ $_result2 = _query("SELECT id,username,content,date_time FROM tb_comment WHERE f
 	require ROOT_PATH.'includes/title.inc.php';
 ?>
 <script src="js/jquery-2.1.1.js"></script>
-<script src="js/food_detail.js"></script>
+<script src="js/product_detail.js"></script>
 </head>
 <body>
 <?php 
@@ -37,44 +39,55 @@ $_result2 = _query("SELECT id,username,content,date_time FROM tb_comment WHERE f
 <?php 
 	$_rows=_fetch_array_list($_result);
 	$_html = array();
-	$_html['id'] = $_rows['id'];
+	$_html['id'] = $_id;
 	$_html['name'] = $_rows['name'];
 	$_html['pic'] = $_rows['pic'];
-	$_html['material']=$_rows['material'];
-	$_html['seasoning']=$_rows['seasoning'];
-	$_html['content'] = $_rows['content'];
+	$_html['variety']=$_rows['variety'];
+	$_html['area']=$_rows['area'];
+	$_html['standard']=$_rows['standard'];
 	$_html['price'] = $_rows['price'];
+	$_html['market_time'] = $_rows['market_time'];
+	$_html['content'] = $_rows['content'];
+	$_html['stock'] = $_rows['stock'];
 	$_html = _html($_html);	
 ?>
-<div id="food_detail_up">
-	<div id="food_detail_left">
-		<img src="uploads/<?php echo $_html['pic']?>"></img>
+<div id="product_detail_up">
+	<div id="product_detail_left">
+		<img src="thumb.php?filename=<?php echo 'uploads/'.$_html['pic']?>&percent=<?php echo $_percent?>"></img>
 	</div>
 	
-	<div id="food_detail_right">
+	<div id="product_detail_right">
 			<h2><?php echo $_html['name']?></h2>
 			<dl><strong>价格:</strong><?php echo $_html['price']?>元</dl>
 			<p class="line"></p>
-			<dl><strong>用料:</strong><?php echo $_html['material']?></dl>
+			<dl><strong>品种:</strong><?php echo $_html['variety']?></dl>
 			<p class="line"></p>
-			<dl><strong>调料:</strong><?php echo $_html['seasoning']?></dl>
+			<dl><strong>规格:</strong><?php echo $_html['standard']?></dl>
+			<p class="line"></p>
+			<dl><strong>上市时间:</strong><?php echo $_html['market_time']?></dl>
 			<ul>
-				<li><a href="orders_buy.php?food_id=<?php echo $_html['id']?>"><button>购买</button></a></li>
+				<li><a href="orders_buy.php?product_id=<?php echo $_html['id']?>"><button>购买</button></a></li>
 				<li><a href="shoppingcart_add.php?id=<?php echo $_html['id']?>"><button>加入购物车</button></a></li>
 			</ul>
 	</div>
 </div>
-<div id="food_detail_bottom">
+<div id="product_detail_bottom">
 	<div id="cooking">
 		<dl>
-			<dt><strong class="cooking">做法</strong><strong class="comment" >评价</strong></dt>
+			<dt>
+				<li class="cooking">商品详情</li>
+				<li class="comment" >商品评价</li>
+			</dt>
 			<p class="line"></p>
 			<dd><?php echo _wrap($_html['content'])?></dd>
 		</dl>
 	</div>
 	<div id="comment">
 		<dl>
-			<dt><strong class="cooking">做法</strong><strong class="comment" >评价</strong></dt>
+			<dt>
+				<li class="cooking">商品详情</li>
+				<li class="comment" >商品评价</li>
+			</dt>
 		</dl>
 		<p class="line"></p>		
 			<?php 

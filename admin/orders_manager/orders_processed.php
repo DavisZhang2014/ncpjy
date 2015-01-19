@@ -41,7 +41,7 @@ $_result = _query("SELECT * FROM tb_orders WHERE deal='1' LIMIT $_pagenum,$_page
 		<?php 
 			require ROOT_PATH.'includes/orders_manager.inc.php';
 		?>
-	<div id="food_list">
+	<div id="product_list">
 		<h2>已处理订单</h2>
 		<table cellspacing="1">
 		<tr><th>商品信息</th><th>商品名称</th><th>单价</th><th>数量</th></tr>
@@ -73,12 +73,12 @@ $_result = _query("SELECT * FROM tb_orders WHERE deal='1' LIMIT $_pagenum,$_page
 											of.price,
 											ord.quantity
 										FROM 
-											tb_food AS of,tb_order_items AS ord
+											tb_product AS of,tb_order_items AS ord
 										WHERE 
-											ord.order_id='{$_rows['order_id']}' AND of.id=ord.food_id
+											ord.order_id='{$_rows['order_id']}' AND of.id=ord.product_id
 										");
 				while(!!$_rows2 = _fetch_array_list($_result2)){
-					$_html['food_id'] = $_rows2['id'];
+					$_html['product_id'] = $_rows2['id'];
 					$_html['name'] = $_rows2['name'];
 					$_html['pic']=$_rows2['pic'];
 					$_html['price'] = $_rows2['price'];
@@ -86,7 +86,7 @@ $_result = _query("SELECT * FROM tb_orders WHERE deal='1' LIMIT $_pagenum,$_page
 					$_html = _html($_html);
 			?>
 			<tr class="product">			
-				<td><a href="food_detail.php?id=<?php echo $_html['food_id']?>"><img src="../../thumb.php?filename=<?php echo 'uploads/'.$_html['pic']?>&percent=<?php echo $_percent?>" /></a></td>
+				<td><a href="product_detail.php?id=<?php echo $_html['product_id']?>"><img src="../../thumb.php?filename=<?php echo 'uploads/'.$_html['pic']?>&percent=<?php echo $_percent?>" /></a></td>
 				<td><?php echo $_html['name']?></td>
 				<td><?php echo $_html['price']?></td>
 				<td><?php echo  $_html['quantity']?></td>

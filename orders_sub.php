@@ -26,14 +26,14 @@ if(!isset($_COOKIE['username'])){
 $_clean = array();
 $_clean['order_id'] = _build_order_no();
 $_clean['username'] = $_COOKIE['username'];
-$_clean['food_id'] = $_POST['food_id'];
+$_clean['product_id'] = $_POST['product_id'];
 $_clean['re_name'] = $_POST['re_name'];
 $_clean['phone'] = $_POST['phone'];
 $_clean['address'] = $_POST['address'];
 $_clean['remarks'] = $_POST['remarks'];
 $_clean['quantity'] = $_POST['quantity'];
 
-$_row = _fetch_array("SELECT stock FROM tb_food WHERE id='{$_clean['food_id']}'");
+$_row = _fetch_array("SELECT stock FROM tb_product WHERE id='{$_clean['product_id']}'");
 	if($_row['stock'] >= $_clean['quantity']){
 	//将表单数据保存到数据库
 		_query("INSERT INTO tb_orders (
@@ -59,23 +59,23 @@ $_row = _fetch_array("SELECT stock FROM tb_food WHERE id='{$_clean['food_id']}'"
 		{
 			_query("INSERT INTO tb_order_items (
 												order_id,
-												food_id,
+												product_id,
 												quantity
 											)VALUES(
 												'{$_clean['order_id']}',
-												'{$_clean['food_id']}',
+												'{$_clean['product_id']}',
 												'{$_clean['quantity']}'
 											)
 											");
 		
 			if(_affected_rows() == 1){
-				_query("DELETE FROM tb_shoppingcart WHERE username='{$_COOKIE['username']}' AND food_id='{$_clean['food_id']}'");
-				_query("UPDATE tb_food
+				_query("DELETE FROM tb_shoppingcart WHERE username='{$_COOKIE['username']}' AND product_id='{$_clean['product_id']}'");
+				_query("UPDATE tb_product
 							SET
 								stock = stock-'{$_clean['quantity']}',
 								sell_count = sell_count+'{$_clean['quantity']}'
 							WHERE
-								id = '{$_clean['food_id']}'
+								id = '{$_clean['product_id']}'
 					");
 				_close();
 				_location('购买成功', 'index.php');

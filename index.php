@@ -15,12 +15,16 @@ define('IN_TG',true);
 define('SCRIPT', 'index');
 //引入公共文件
 require dirname(__FILE__).'/includes/common.inc.php'; //转换成硬路径，速度更快
-$_percent = 0.8;
+//定义图片放缩比例
+$_per_w = 0.76;
+$_per_h = 0.51;
+//list中图片放缩比例
+$_percent = 0.7;
 global $_pagesize,$_pagenum;
-_page("SELECT id FROM tb_food",6);   //第一个参数获取总条数，第二个参数，指定每页多少条
-$_result=_query("SELECT id,name,pic,price FROM tb_food");
-$_result2 = _query("SELECT id,name,pic FROM tb_food WHERE recommend = '1' LIMIT 1");
-$_result3 = _query("SELECT id,name,pic FROM tb_food WHERE recommend = '1' ORDER BY date_time LIMIT 1");
+_page("SELECT id FROM tb_product",12);   //第一个参数获取总条数，第二个参数，指定每页多少条
+$_result=_query("SELECT id,name,pic,price FROM tb_product LIMIT $_pagenum,$_pagesize");
+$_result2 = _query("SELECT id,name,pic FROM tb_product WHERE recommend = '1' LIMIT 1");
+$_result3 = _query("SELECT id,name,pic FROM tb_product WHERE recommend = '1' ORDER BY date_time LIMIT 1");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -69,7 +73,7 @@ $_result3 = _query("SELECT id,name,pic FROM tb_food WHERE recommend = '1' ORDER 
 			}
 		?>
 		<dl>
-			<a href="food_detail.php?id=<?php echo $_html2['id']?>"><img src="thumb.php?filename=<?php echo 'uploads/'.$_html2['pic']?>&percent=<?php echo $_percent?>" /></a>
+			<a href="product_detail.php?id=<?php echo $_html2['id']?>"><img src="thumb.php?filename=<?php echo 'uploads/'.$_html2['pic']?>&per_w=<?php echo $_per_w?>&per_h=<?php echo $_per_h?>" /></a>
 		</dl>
 	</div>
 	<div id="new">
@@ -86,13 +90,15 @@ $_result3 = _query("SELECT id,name,pic FROM tb_food WHERE recommend = '1' ORDER 
 			}
 		?>
 		<dl>
-			<a href="food_detail.php?id=<?php echo $_html3['id']?>"><img src="thumb.php?filename=<?php echo 'uploads/'.$_html3['pic']?>&percent=<?php echo $_percent?>" /></a>
+			<a href="product_detail.php?id=<?php echo $_html3['id']?>"><img src="thumb.php?filename=<?php echo 'uploads/'.$_html3['pic']?>&per_w=<?php echo $_per_w?>&per_h=<?php echo $_per_h?>" /></a>
 		</dl>
 	</div>
 </div>
+	
+	
 <div id="subject">
-	<?php 
-	$_i=1;
+	 <?php 
+		$_i=1;
  		while (!!$_rows = _fetch_array_list($_result)) {
  			$_html = array();
  			$_html['id'] = $_rows['id'];
@@ -100,24 +106,24 @@ $_result3 = _query("SELECT id,name,pic FROM tb_food WHERE recommend = '1' ORDER 
  			$_html['pic'] = $_rows['pic'];
  			$_html['price'] = $_rows['price'];
  			$_html = _html($_html);
- 			
-	//echo "<div id='list".$_i++."' class='list'>";
- 	//问题，当鼠标放置在图片上方，显示<ul>中信息，在index.js文件中编写jQuery代码
-	?>
-	
-	<div  class="list">
-		<dl>
-			<a href="food_detail.php?id=<?php echo $_html['id']?>"><img src="uploads/<?php echo $_html['pic']?>" alt="<?php echo $_html['name']?>" /></a>
+ 	?>
+ 	<div  id="list">
+ 		<dl>
+			<dt><a href="product_detail.php?id=<?php echo $_html['id']?>"><img src="thumb.php?filename=<?php echo 'uploads/'.$_html['pic']?>&percent=<?php echo $_percent?>" alt="<?php echo $_html['name']?>" /></a></dt>
+			<dd><?php echo $_html['name']?></dd>
+			<dd class="price">￥<?php echo $_html['price']?></dd>
 		</dl>
-		<ul>
-			<li class="name"><strong><?php echo $_html['name']?></strong></li>
-			<li class="price"><strong><?php echo $_html['price']?>元</strong></li>
-		</ul>
-	</div>
-<?php 
-
-}
-?>
+ 	</div>
+ 
+	 <?php 
+	}
+	//调用分页
+	_free_result($_result);
+	_free_result($_result2);
+	_free_result($_result3);
+	_paging(1);
+	_paging(3);
+	?>
 </div>
 
 <?php

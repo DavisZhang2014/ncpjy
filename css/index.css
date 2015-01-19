@@ -114,51 +114,53 @@
 	color:#630;
 	margin:10px 20px;
 }
-#subject{
+#left_btn{
+	background:url(../images/left_btn.png);
+	position:absolute;
+	left:180px;
+	top:1000px;
+	width:70px
+	;height:70px;
+	z-index:100;
+	cursor:pointer;
+	opacity:0.5;
+	filter:alpha(opacity=50);
+}
+#right_btn{
+	background:url(../images/right_btn.png);
+	position:absolute;
+	right:180px;
+	top:1000px;
+	width:70px;
+	height:70px;
+	z-index:100;
+	cursor:pointer;
+	opacity:0.5;
+	filter:alpha(opacity=50);}
+#subject{ 
 	width:1050px;
-	height:700px;
+	height:auto;
 	border:1px dashed #666;
-	margin:10px auto;
+	float:left;
+	margin:10px 186px;
+	
 }
 
-#subject  .list{
-	width:350px;
-	height:227px;
+#subject #list{
+	width:250px;
+	height:300px;
 	float:left;
-	margin:1px 0;
+	margin:10px 5px;
+	border:1px dashed #333;
+	
 }
-#subject .list dl{
-	margin:0 9px;
+
+#subject #list dl dt img{
+	margin:0 2px;
 }
-#subject .list dl img{
-	opacity:0.9;
-	border-radius:20px;
+#subject #list dl dd{
+	margin:8px;
 }
-#subject .list ul{
-	display:none;
-	width:333px;
-	height:70px;
-	background:#630;
-	position:relative;
-	margin:0 9px;
-	bottom:70px;
-	opacity:0.9;
-	border-bottom-left-radius:20px;
-	border-bottom-right-radius:20px;
-}
-#subject .list ul li.name{
-	position:relative;
-	top:10px;
-	left:10px;
-	font-size:20pt;
-	color:#FFFFFF;
-}
-#subject .list ul li.price{
-	list-style:none;
-	position:relative;
-	top:0;
-	right:10px;
-	float:right;
-	font-size:20pt;
-	color:#FFFFFF;
+#subject #list dl dd.price{
+	color:#630;
 }

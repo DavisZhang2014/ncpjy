@@ -1,80 +1,80 @@
 @CHARSET "UTF-8";
-#member #food_list{
+#member #product_list{
 	width:750px;
 	margin:9px;
 	float:right;
 }
-#member #food_list table{
+#member #product_list table{
 	width:100%;
 	text-align:center;
 	background:#ccc;
 	margin-bottom:0px;
 }
-#member #food_list table tr{
+#member #product_list table tr{
 	line-height:30px;
 	background:#fff;
 }
-#member #food_list table tr.orders td{
+#member #product_list table tr.orders td{
 	line-height:25px;
 	background:#eed;
 	text-align:left;
 	font-size:10px;
 }
-#member #food_list table tr.orders td span{
+#member #product_list table tr.orders td span{
 	margin:0 10px;
 }
-#member #food_list table tr.orders td span.state{
+#member #product_list table tr.orders td span.state{
 	float:right;
 	margin:0 50px;
 }
-#member #food_list table tr.orders td span.deliver{
+#member #product_list table tr.orders td span.deliver{
 	float:right;
 	margin:0 10px;
 }
-#member #food_list table tr th{
+#member #product_list table tr th{
 	background:#ccc;
 }
-#member #food_list table tr td{
+#member #product_list table tr td{
 	line-height:48px;
 }
-#member #food_list dl.submit{
+#member #product_list dl.submit{
 	line-height:48px;
 	float:right;
 	margin:20px 20px 0 0;
 }
-#member #food_list table td a{
+#member #product_list table td a{
 	text-decoration:none;
 	color:#333;
 }
-#member #food_list table td a:hover{
+#member #product_list table td a:hover{
 	text-decoration:underline;
 	color:#03f;
 }
-#member #food_list p.line{
+#member #product_list p.line{
 	width:95%;
 	margin:0 auto;
 	clear:both;
 	height:5px;
 	border-bottom:1px dashed #333;
 }
-#member #food_list dl.order_info{
+#member #product_list dl.order_info{
 	width:500px;
 	height:200px;
 	border:1px dashed #333;
 	margin:20px 0 0 0;
 }
-#member #food_list dl.order_info dt{
+#member #product_list dl.order_info dt{
 	font-size:18px;
 	margin:20px 0 0 20px;
 }
-#member #food_list dl.order_info dd{
+#member #product_list dl.order_info dd{
 	font-size:15px;
 	margin:20px 0 0 50px;
 }
-#member #food_list dl.btn{
+#member #product_list dl.btn{
 	margin:20px 200px;
 }
-#member #food_list dl.btn button{
+#member #product_list dl.btn button{
 	width:80px;
 	height:25px;
 }

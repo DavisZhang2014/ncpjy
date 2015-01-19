@@ -28,11 +28,12 @@
 	<div id="bottom">
 		<ul>
 			<li class="index"><a href="index.php">首 页</a></li>
-			<li><a href="foodstuff.php?sort=0">荤 菜</a></li>
-			<li><a href="foodstuff.php?sort=1">素 菜</a></li>
-			<li><a href="foodstuff.php?sort=2">凉 菜</a></li>
-			<li><a href="foodstuff.php?sort=3">汤 类</a></li>
-			<li><a href="foodstuff.php?sort=4">粥 类</a></li>
+			<li><a href="productstuff.php?sort=0">果 品</a></li>
+			<li><a href="productstuff.php?sort=1">蔬 菜</a></li>
+			<li><a href="productstuff.php?sort=2">畜 禽</a></li>
+			<li><a href="productstuff.php?sort=3">水 产</a></li>
+			<li><a href="productstuff.php?sort=4">花 卉</a></li>
+			<li><a href="productstuff.php?sort=5">其 他</a></li>
 		</ul>
 	</div>
 </div>

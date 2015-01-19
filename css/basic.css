@@ -86,6 +86,7 @@ body{
 	float:left;
 	width:26px;
 	height:20px;
+	list-style:none;
 }
 #page_num ul li a {
 	display:block;

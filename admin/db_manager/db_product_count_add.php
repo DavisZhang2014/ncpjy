@@ -17,7 +17,7 @@ require dirname(__FILE__).'/../../includes/common.inc.php'; //转换成硬路径
 
 $_clean['adds'] = intval(@$_POST['adds']);
 echo $_clean['adds'].'13';
-_query("UPDATE tb_food SET stock = stock + '{$_clean['adds']}' WHERE id = '{$_GET['ids']}'");
+_query("UPDATE tb_product SET stock = stock + '{$_clean['adds']}' WHERE id = '{$_GET['ids']}'");
 if(_affected_rows() == 1){
 	_alert_goback("添加成功");
 }

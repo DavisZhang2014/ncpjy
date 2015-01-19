@@ -18,9 +18,9 @@ if(!isset($_GET['id']) || !isset($_GET['order_id'])){
 }
 $_id=$_GET['id'];
 $_order_id=$_GET['order_id'];
-$_result=_query("SELECT * FROM tb_food WHERE id= '$_id' LIMIT 1");
+$_result=_query("SELECT * FROM tb_product WHERE id= '$_id' LIMIT 1");
 $_result2 = _query("SELECT order_time FROM tb_orders WHERE id='$_order_id' LIMIT 1");
-$_result3 = _query("SELECT username,content,date_time FROM tb_comment WHERE food_id='$_id'");
+$_result3 = _query("SELECT username,content,date_time FROM tb_comment WHERE product_id='$_id'");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -48,12 +48,12 @@ $_result3 = _query("SELECT username,content,date_time FROM tb_comment WHERE food
 	$_html['order_time'] = $_rows2['order_time'];
 	$_html = _html($_html);	
 ?>
-<div id="food_detail_up">
-	<div id="food_detail_left">
+<div id="product_detail_up">
+	<div id="product_detail_left">
 		<img src="uploads/<?php echo $_html['pic']?>"></img>
 	</div>
 	
-	<div id="food_detail_right">
+	<div id="product_detail_right">
 			<h2><?php echo $_html['name']?></h2>
 			<dl>
 				<dt>价格：<?php echo $_html['price']?>元</dt>
@@ -67,10 +67,10 @@ $_result3 = _query("SELECT username,content,date_time FROM tb_comment WHERE food
 			</dl>
 	</div>
 </div>
-<div id="food_detail_bottom">
+<div id="product_detail_bottom">
 		<div id="comment">
 			<span>累计评价：<?php ?></span>
-			<form method="post" action="comment_sub.php?order_id=<?php echo $_order_id?>&food_id=<?php echo $_id?>">
+			<form method="post" action="comment_sub.php?order_id=<?php echo $_order_id?>&product_id=<?php echo $_id?>">
 				<dl>评价内容：<textarea name = "content" cols="100" rows="5"></textarea></dl>
 				<dl class="submit"><input type="submit" value="提交评价"></input></dl>
 			</form>

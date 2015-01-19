@@ -1,22 +1,22 @@
 @CHARSET "UTF-8";
-#food_detail_up{
+#product_detail_up{
 	width:1005px;
 }
-#food_detail_up #food_detail_left{
+#product_detail_up #product_detail_left{
 	width:350px;
 	height:250px;
 	border:2px solid #CCC;
 	margin:1px 0px 1px 215px;
 	float:left;
 }
-#food_detail_up #food_detail_right{
+#product_detail_up #product_detail_right{
 	width:400px;
 	height:250px;
 	border:1px solid #CCC;
 	float:right;
 	margin:1px -100px 1px 0;
 }
-#food_detail_up #food_detail_right h2{
+#product_detail_up #product_detail_right h2{
 	height:30px;
 	font-size:30px;
 	background:#CCC;
@@ -24,7 +24,7 @@
 	margin:10px 0 10px 0;
 }
 
-#food_detail_up #food_detail_right dt{
+#product_detail_up #product_detail_right dt{
 	height:20px;
 	font-size:20px;
 	background:#CCC;
@@ -32,32 +32,32 @@
 	margin:10px 0 10px 0;
 }
 
-#food_detail_bottom{
+#product_detail_bottom{
 	width:1005px;
 	margin:260px 215px 0 215px;
 	border:3px solid #CCC;
 }
-#food_detail_bottom #comment{
+#product_detail_bottom #comment{
 	background:#CCC;
 }
-#food_detail_bottom #comment span{
+#product_detail_bottom #comment span{
 	margin:10px;
 	font-size:20px;
 	font-weight:bold;
 }
-#food_detail_bottom #comment dl{
+#product_detail_bottom #comment dl{
 	margin:10px 0 10px 30px;
 }
-#food_detail_bottom #comment dl.submit{
+#product_detail_bottom #comment dl.submit{
 	margin:20px 0;
 	text-align:center;
 }
 
-#food_detail_bottom #content {
+#product_detail_bottom #content {
 	height:auto;
 	margin:10px 0 30px 0;
 }
-#food_detail_bottom #content p.line{
+#product_detail_bottom #content p.line{
 	
 	width:95%;
 	margin:0 auto;
@@ -65,16 +65,16 @@
 	height:5px;
 	border-bottom:1px dashed #333;
 }
-#food_detail_bottom #content dl.con{
+#product_detail_bottom #content dl.con{
 	float:left;
 	margin:20px 30px 0 30px;
 }
-#food_detail_bottom #content dl.time{
+#product_detail_bottom #content dl.time{
 	float:right;
 	margin:25px 20px 0 30px;
 	font-size:8px;
 }
-#food_detail_bottom #content dl.username{
+#product_detail_bottom #content dl.username{
 	float:right;
 	margin:20px 30px 0 0;
 	font-size:15px;

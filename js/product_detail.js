@@ -1,10 +1,10 @@
 $(document).ready(function(){
-	$("strong.cooking").click(function(){
+	$("li.cooking").click(function(){
 		$("#comment").hide();
 		$("#cooking").show();	
 	});
 
-	$("strong.comment").click(function(){
+	$("li.comment").click(function(){
 		$("#cooking").hide();
 		$("#comment").show();
 	});

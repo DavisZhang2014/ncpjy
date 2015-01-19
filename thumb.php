@@ -15,5 +15,6 @@ if (isset($_GET['filename']) && isset($_GET['percent'])) {
 }
 if (isset($_GET['filename']) && isset($_GET['per_w']) && isset($_GET['per_h'])) {
 	_change($_GET['filename'],$_GET['per_w'],$_GET['per_h']);
+	echo $_GET['per_w'].$_GET['per_h'].'123123';
 }
 ?>

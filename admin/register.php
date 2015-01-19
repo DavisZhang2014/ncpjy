@@ -29,7 +29,7 @@ require dirname(__FILE__).'/../includes/common.inc.php';
 </head>
 <body>
 <?php 
-	require ROOT_PATH.'includes/admin_header.inc.php';
+	require ROOT_PATH.'includes/db_header.inc.php';
 //判断是否提交了
 if(@$_GET['action']=='register')
 {
@@ -45,8 +45,10 @@ if(@$_GET['action']=='register')
 	$_clean['uniqid'] = _check_uniqid($_POST['uniqid'],$_SESSION['uniqid']);
 	$_clean['username'] = _check_username(@$_POST['username'],2,20);
 	$_clean['password'] = _check_password(@$_POST['password'],@$_POST['notpassword'],6);
-	$_clean['role_id'] = $_POST['role_id'];
+	$_clean['sex'] = _check_sex(@$_POST['sex']);
 	$_clean['phone'] = $_POST['phone'];
+	$_clean['role_id'] = $_POST['role_id'];
+	
 	//在新增之前，要判断用户名是否重复
 	_is_repeat(
 				"SELECT username FROM tb_admin WHERE username='{$_clean['username']}' LIMIT 1",
@@ -60,6 +62,7 @@ if(@$_GET['action']=='register')
 																uniqid,
 																username,
 																password,
+																sex,
 																phone,
 																role_id,
 																reg_time																							
@@ -68,6 +71,7 @@ if(@$_GET['action']=='register')
 																'{$_clean['uniqid']}',
 																'{$_clean['username']}',
 																'{$_clean['password']}',
+																'{$_clean['sex']}',
 																'{$_clean['phone']}',
 																'{$_clean['role_id']}',
 																NOW()
@@ -99,6 +103,7 @@ else
 			<dd>用 户 名：<input type="text" name="username" class="text" />(*必填，至少两位)</dd>
 			<dd>密　　码：<input type="password" name="password" class="text" />(*必填，至少六位)</dd>
 			<dd>确认密码：<input type="password" name="notpassword" class="text" />(*必填，同上)</dd>
+			<dd>性　　别：<input type="radio" name="sex" value="男" checked="checked" />男 <input type="radio" name="sex" value="女" />女</dd>
 			<dd>联系方式：<input type="text" name="phone" class="text" />(*必填，至少两位)</dd>
 			<dd>注册角色：<select name="role_id">
 							<option value="1">数据库管理员</option>

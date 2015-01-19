@@ -30,7 +30,7 @@
 
 #member #product_add dl.product_intro{
 	width:500px;
-	height:180px;
+	height:200px;
 	margin:20px 15px 10px 20px;
 	float:right;
 	background:#eee;
@@ -57,6 +57,12 @@
 	padding:0 20px;
 	top:50px;
 }
+#member #product_add dl.product_intro dd.product_time{
+	position:relative;
+	margin:0 20px 0 20px;
+	padding:10px 20px 0 20px;
+	top:55px;
+}
 #member #product_add dl.product_intro dd.product_sea{
 	position:relative;
 	margin:10px 20px 0 20px;
@@ -65,7 +71,7 @@
 }
 #member #product_add dl.method{
 	position:absolute;
-	top:380px;
+	top:390px;
 	width:750px;
 	background:#eee;
 }

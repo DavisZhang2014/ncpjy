@@ -106,6 +106,33 @@ function _thumb($_filename,$_percent) {
 	imagedestroy($_image);
 }
 
+function _change($_filename,$_per_w,$_per_h) {
+	//生成png标头文件
+	header('Content-type: image/png');
+	$_n = explode('.',$_filename);
+	//获取文件信息，长和高
+	list($_width, $_height) = getimagesize($_filename);
+	//生成缩微的长和高
+	$_new_width = $_width * $_per_w;
+	$_new_height = $_height * $_per_h;
+	//创建一个以0.3百分比新长度的画布
+	$_new_image = imagecreatetruecolor($_new_width,$_new_height);
+	//按照已有的图片创建一个画布
+	switch ($_n[1]) {
+		case 'jpg' : $_image = imagecreatefromjpeg($_filename);
+		break;
+		case 'png' : $_image = imagecreatefrompng($_filename);
+		break;
+		case 'gif' : $_image = imagecreatefrompng($_filename);
+		break;
+	}
+	//将原图采集后重新复制到新图上，就缩略了
+	imagecopyresampled($_new_image, $_image, 0, 0, 0, 0, $_new_width,$_new_height, $_width, $_height);
+	imagepng($_new_image);
+	imagedestroy($_new_image);
+	imagedestroy($_image);
+}
+
 /**
  * _title()标题截取函数
  * @param unknown $_string
@@ -186,7 +213,7 @@ function _page($_sql,$_size)
  */
 function _paging($_type)
 {
-	global $_page,$_pageabsolute,$_num;
+	global $_page,$_pageabsolute,$_num,$_id;
 	if($_type == 1)
 	{
 		echo '<div id="page_num">';
@@ -195,11 +222,11 @@ function _paging($_type)
 		{
 		if ($_page == ($i+1))
 		{
-		echo '<li><a href="'.SCRIPT.'.php?page='.($i+1).'"class="selected">'.($i+1).'</a></li>';
+		echo '<li><a href="'.SCRIPT.'.php?'.$_id.'page='.($i+1).'"class="selected">'.($i+1).'</a></li>';
 				}
 				else
 		{
-		echo '<li><a href="'.SCRIPT.'.php?page='.($i+1).'">'.($i+1).'</a></li>';
+		echo '<li><a href="'.SCRIPT.'.php?'.$_id.'page='.($i+1).'">'.($i+1).'</a></li>';
 		}
 		}
 		echo '</ul>';
@@ -219,7 +246,7 @@ function _paging($_type)
 						else 
 						{
 							echo '<li><a href="'.SCRIPT.'.php">首页</a> |</li>';
-							echo '<li><a href="'.SCRIPT.'.php?page='.($_page-1).'">上一页</a> |</li>';
+							echo '<li><a href="'.SCRIPT.'.php?'.$_id.'page='.($_page-1).'">上一页</a> |</li>';
 						}
 						if($_page == $_pageabsolute)
 						{
@@ -228,11 +255,15 @@ function _paging($_type)
 						}
 						else
 						{
-							echo '<li><a href="'.SCRIPT.'.php?page='.($_page+1).'">下一页</a> | </li>';
-							echo '<li><a href="'.SCRIPT.'.php?page='.$_pageabsolute.'">尾页</a></li>';
+							echo '<li><a href="'.SCRIPT.'.php?'.$_id.'page='.($_page+1).'">下一页</a> | </li>';
+							echo '<li><a href="'.SCRIPT.'.php?'.$_id.'page='.$_pageabsolute.'">尾页</a></li>';
 						}
 			echo '</ul>';
 			echo '</div>';
+	}
+	elseif($_type == 3){
+		echo "<div class='f_btn' id='left_btn' ></div>";
+		echo "<div class='f_btn' id='right_btn'></div>";
 	}
 }
 

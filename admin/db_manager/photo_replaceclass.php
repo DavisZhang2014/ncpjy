@@ -123,8 +123,8 @@ else
 $_clean = array();
 $_clean['id']=$_POST['id'];
 $_clean['pic'] = _check_face($_name);
-$_rows = _fetch_array("SELECT pic FROM tb_food WHERE id='{$_clean['id']}' LIMIT 1");
-_query("UPDATE tb_food SET pic = '{$_clean['pic']}' WHERE id='{$_clean['id']}'");
+$_rows = _fetch_array("SELECT pic FROM tb_product WHERE id='{$_clean['id']}' LIMIT 1");
+_query("UPDATE tb_product SET pic = '{$_clean['pic']}' WHERE id='{$_clean['id']}'");
 if (_affected_rows() == 1)
 					{
 					_close();
@@ -132,16 +132,16 @@ if (_affected_rows() == 1)
 					if(file_exists($_url)){
 						unlink($_url);
 					}
-					_location('恭喜你，更改成功！','db_food_add.php');
+					_location('恭喜你，更改成功！','db_product_add.php');
 }
 else
 	{
 	_close();
-	_location('很遗憾，更改失败！','db_food_add.php');
+	_location('很遗憾，更改失败！','db_product_add.php');
 }
 
 
-echo "<script>alert('文件上传成功');location.href='db_food_add?url=".$_FILES['userfile']['name']."';</script>";
+echo "<script>alert('文件上传成功');location.href='db_product_add?url=".$_FILES['userfile']['name']."';</script>";
 
 ?>
 </body>

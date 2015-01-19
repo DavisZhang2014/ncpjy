@@ -25,10 +25,11 @@ if (!defined('IN_TG'))		//防止恶意调用
 	<dl>
 		<dt>商品管理</dt>
 		<dd><a href="db_product_add.php">商品添加</a></dd>
-		<dd><a href="db_food_list.php?sort=0">荤菜列表</a></dd>
-		<dd><a href="db_food_list.php?sort=1">素菜列表</a></dd>
-		<dd><a href="db_food_list.php?sort=2">凉菜列表</a></dd>
-		<dd><a href="db_food_list.php?sort=3">汤类列表</a></dd>
-		<dd><a href="db_food_list.php?sort=4">粥类列表</a></dd>
+		<dd><a href="db_product_list.php?sort=0">果品列表</a></dd>
+		<dd><a href="db_product_list.php?sort=1">蔬菜列表</a></dd>
+		<dd><a href="db_product_list.php?sort=2">畜禽列表</a></dd>
+		<dd><a href="db_product_list.php?sort=3">水产列表</a></dd>
+		<dd><a href="db_product_list.php?sort=4">花卉列表</a></dd>
+		<dd><a href="db_product_list.php?sort=5">其他产品</a></dd>
 	</dl>
 </div>

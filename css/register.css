@@ -1,15 +1,20 @@
 @CHARSET "UTF-8";
 #register{
-	width:auto;
+	width:1005px;
 	height:600px;
+	margin:10px auto;
 	border:2px solid #CCC;
 	font-size:12px;
 }
 #register h2{
+	position:relative;
+	top:20px;
 	text-indent:0;
 	text-align:center;	
 }
 #register dl {
+	position:relative;
+	top:10px;
 	width:400px;
 	margin:0 auto;
 }

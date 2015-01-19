@@ -116,7 +116,7 @@ else
 			<dd>密码提示：<input type="text" name="passt" class="text" />(*必填，至少两位)</dd>
 			<dd>密码回答：<input type="text" name="passd" class="text" />(*必填，至少两位)</dd>
 			<dd>性　　别：<input type="radio" name="sex" value="男" checked="checked" />男 <input type="radio" name="sex" value="女" />女</dd>
-			<dd> Q	 Q :<input type="text" name="qq" class="text" /></dd>
+			<dd> Q&nbsp;&nbsp;&nbsp;&nbsp; Q ：<input type="text" name="qq" class="text" /></dd>
 			<dd>电子邮件：<input type="text" name="email" class="text" />(*必填，用于激活账户)</dd>
 			<dd>验 证 码：<input type="text" name="code" class="text yzm"  /><img src="code.php" id="code" /></dd>
 			<dd><input type="submit" class="submit" value="注册" /></dd>

@@ -12,7 +12,7 @@ session_start();
 define('IN_TG',true);
 //引入公共文件
 //定义一个常量，用来指定本页的内容
-define('SCRIPT', 'db_food_list');
+define('SCRIPT', 'db_product_list');
 //引入公共文件
 require dirname(__FILE__).'/../../includes/common.inc.php';
 
@@ -32,7 +32,7 @@ if ($_GET['action'] == 'delete' && isset($_GET['id'])){
 												pic,
 												sort
 										FROM
-												tb_food
+												tb_product
 										WHERE
 												id='{$_GET['id']}'
 										LIMIT
@@ -40,7 +40,7 @@ if ($_GET['action'] == 'delete' && isset($_GET['id'])){
 		)){
 			$_url = '../../uploads/'.$_rows['pic'];
 			//首先删除图片的数据库信息
-			_query("DELETE FROM tb_food WHERE id='{$_GET['id']}'");
+			_query("DELETE FROM tb_product WHERE id='{$_GET['id']}'");
 			if(_affected_rows() == 1){
 				//删除图片的物理地址
 				if(file_exists($_url)){
@@ -50,7 +50,7 @@ if ($_GET['action'] == 'delete' && isset($_GET['id'])){
 					_alert_back('磁盘里已不存在此图！');
 				}
 				_close();
-				_location('图片删除成功！','db_food_list.php?sort='.$_rows['sort']);
+				_location('图片删除成功！','db_product_list.php?sort='.$_rows['sort']);
 			}else {
 				_alert_back("删除失败");
 			}

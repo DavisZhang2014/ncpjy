@@ -1,9 +1,9 @@
 $(document).ready(function(){
-	$(".list").mouseenter(function(){
-		$(this).find("ul").fadeTo(200,0.9);
-	});
-
-	$(".list").mouseleave(function(){
-		$(this).find("ul").fadeTo(200,0);
-	});
+	$('.f_btn').bind({
+			'mouseenter' : function(){$(this).animate({opacity:1},0);},
+			'mouseleave' : function(){$(this).animate({opacity:0.5},0);}
+		});
+		
+	
 });
+	

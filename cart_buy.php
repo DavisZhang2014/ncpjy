@@ -26,15 +26,15 @@ if ($_GET['action'] == 'gobuy'){
 							f.pic,
 							f.price,
 							s.id,
-							s.food_id,
+							s.product_id,
 							s.creat_date,
 							s.quantity
 						FROM
-							tb_food AS f,
+							tb_product AS f,
 							tb_shoppingcart AS s
 						WHERE
 							f.id = any(SELECT
-										s.food_id
+										s.product_id
 									FROM
 										tb_shoppingcart
 									WHERE
@@ -67,7 +67,7 @@ if ($_GET['action'] == 'gobuy'){
 
 	<div id="orders">
 		<form method="post" name="order" action="cart_sub.php">
-			<input type="hidden" name="food_id" value="<?php echo $_food_id ?>" />
+			<input type="hidden" name="product_id" value="<?php echo $_product_id ?>" />
 			<input type="hidden" name="username" value="<?php echo $_COOKIE['username']?>" />
 			<dl>
 				<dt>收货人信息</dt>
@@ -83,7 +83,7 @@ if ($_GET['action'] == 'gobuy'){
 					<?php 
 							$_html = array();
 							while (!!$_rows = _fetch_array_list($_result)){
-								$_html['food_id'] = $_rows['food_id'];
+								$_html['product_id'] = $_rows['product_id'];
 								$_html['id'] = $_rows['id'];
 								$_html['pic'] = $_rows['pic'];
 								$_html['name'] = $_rows['name'];
@@ -93,7 +93,7 @@ if ($_GET['action'] == 'gobuy'){
 						?>
 						
 						<tr>
-							<td><a href="food_detail.php?id=<?php echo $_html['food_id']?>"><img src="thumb.php?filename=<?php echo 'uploads/'.$_html['pic']?>&percent=<?php echo $_percent?>" /></a></td>
+							<td><a href="product_detail.php?id=<?php echo $_html['product_id']?>"><img src="thumb.php?filename=<?php echo 'uploads/'.$_html['pic']?>&percent=<?php echo $_percent?>" /></a></td>
 							<td><?php echo $_html['name']?></td>
 							<td><?php echo $_html['price']?></td>
 							<td><?php echo $_html['quantity']?></td>

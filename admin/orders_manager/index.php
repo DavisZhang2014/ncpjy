@@ -21,6 +21,51 @@ require dirname(__FILE__).'/../../includes/common.inc.php';
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>数据库管理员中心</title>
+
+<style type="text/css">
+		@CHARSET "UTF-8";
+		#member #product_list{
+			border:1px solid #999;
+			width:750px;
+			margin:9px;
+			float:right;
+			background:#eed;
+		}
+		#member #product_list table{
+			width:100%;
+			margin:10px auto;
+			text-align:center;
+			background:#ccc;
+			margin-bottom:0px;
+		}
+		#member #product_list table tr{
+			height:25px;
+			line-height:40px;
+			background:#fff;
+		}
+		#member #product_list table tr td{
+			line-height:50px;
+		}
+		#member #product_list table td a{
+			text-decoration:none;
+		}
+		#member #product_list table td a:hover{
+			text-decoration:underline;
+		}
+		#member #product_list dl{
+			float:right;
+			margin:10px 300px 0 0;
+		}
+		#member #product_list dl a{
+			text-decoration:none;
+			color:#333;
+		}
+		#member #product_list dl a:hover{
+			text-decoration:underline;
+			color:#030;
+		}
+	
+	</style>
 <?php 
 	require ROOT_PATH.'includes/db_title.inc.php';
 ?>
